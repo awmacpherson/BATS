@@ -27,6 +27,7 @@ def load(path="./BATS_3.0"):
 
 def load_file(id_or_tag, return_first_only=True):
     """Format of the file: (<word>\t<analogy1>(/<analogy>)*\n)*"""
+    if not loaded: raise Exception("Dataset not loaded.")
     if id_or_tag in tags:
         id_or_tag = tags[id_or_tag]
 
@@ -48,6 +49,7 @@ def get_question(fid=None):
     return sample(load_file(fid), 2)
 
 def get_all_questions(fid=None):
+    if not loaded: raise Exception("Dataset not loaded.")
     if fid is None:
         questions = []
         for fid in files:
