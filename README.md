@@ -2,7 +2,7 @@
 Python loader for the Bigger Analogy Test Set (BATS).
 
 API:
-- `load(path)` --- finds BATS files rooted at `path` and parses filenames, storing the state in the module's global namespace.
+- `load(path)` --- finds BATS files rooted at `path` and parses filenames, storing the state in the module's global namespace. Default search path is "./BATS_3.0".
 - `print_tags()` --- print a list of pairs `{ID}: {tag}` identifying files.
 - `get_question(id_or_tag)` --- retrieve a "question" as a nested tuple in the format
   ```
