@@ -41,12 +41,14 @@ def load_file(id_or_tag, return_first_only=True):
         s = map
         return [ [ ln[0], [word.strip() for word in ln[1].split('/')] ] for ln in s]
 
+def _examples_to_question(example, query_answer, first_only=True):
+    return (tuple(example), query_answer[0]), query_answer[1]
 
 def get_question(fid=None):
     if not loaded: raise Exception("Dataset not loaded.")
     if fid is None:
         fid = choice(list(files))
-    return sample(load_file(fid), 2)
+    return _examples_to_question(*sample(load_file(fid), 2))
 
 def get_all_questions(fid=None):
     if not loaded: raise Exception("Dataset not loaded.")
@@ -64,7 +66,7 @@ def get_all_questions(fid=None):
             example = examples.pop(example_idx)
             question_idx = choice(range(len(examples)))
             question = examples.pop(question_idx)
-            questions.append( [example, question] )
+            questions.append( _examples_to_question(example, question) )
         return questions
 
 def print_tags():
