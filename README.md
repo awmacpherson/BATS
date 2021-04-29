@@ -4,7 +4,11 @@ Python loader for the Bigger Analogy Test Set (BATS).
 API:
 - `load(path)` --- finds BATS files rooted at `path` and parses filenames, storing the state in the module's global namespace.
 - `print_tags()` --- print a list of pairs `{ID}: {tag}` identifying files.
-- `get_question(id_or_tag)` --- retrieve a "question" in the form of a pair of pairs of words expressing the same analogy. Pairs are selected randomly using the standard library `random` module. If no argument is given, select a file randomly.
+- `get_question(id_or_tag)` --- retrieve a "question" as a nested tuple in the format
+  ```
+  ( (example_word_1, example_word_2), test_word_1 ), test_word_2
+  ```
+  where `(example_word_1, example_word_2)` and `(test_word_1, test_word_2)` are *analogous*, i.e. "`example_word_1` is to `example_word_2` as `test_word_1` is to `test_word_2`." Pairs are selected randomly using the standard library `random` module. If no argument is given, select a file randomly.
 - `get_all_questions(id_or_tag)` --- Retrieve a list of "questions" exhausting all pairs of analogies from a given file or, if no argument is given, the entire dataset.
 
 Sample session:
