@@ -15,7 +15,7 @@ Sample session:
 ```Python
 In [1]: import BATS
 
-In [2]: BATS.load()
+In [2]: BATS.load('./data/BATS_3.0')
 In [3]: BATS.print_tags()
 ```
 ```
